@@ -283,12 +283,13 @@ namespace BTK_Akademi
                 else if (X.Length == 9)
                 {
                     d = X[0, 0] * (X[1, 1] * X[2, 2] - X[1, 2] * X[2, 1]) -
-                        X[0, 1] * (X[1, 0] * X[2, 2] - X[2, 0] * X[1, 2]) -
+                        X[0, 1] * (X[1, 0] * X[2, 2] - X[2, 0] * X[1, 2]) +
                         X[0, 2] * (X[1, 0] * X[2, 1] - X[1, 1] * X[2, 0]);
                 }
                 else
                 {
                     Console.WriteLine("Tanimli bir boyut yok!");
+                    return d;
                 }
 
                 return d;
@@ -300,7 +301,191 @@ namespace BTK_Akademi
             }
 
         }
+        /// <summary>
+        /// skaler bir değer ile matrisi carpar.
+        /// </summary>
+        /// <param name="c">Skaler deger</param>
+        /// <param name="X">Matris</param>
+        /// <returns>Carpim</returns>
+        public static int[,] SkalerCarpim(int c, int[,] X)
+        {
+            for (int i = 0; i < X.GetLength(0); i++)
+            {
+                for (int j = 0; j < X.GetLength(1); j++)
+                {
+                    X[i, j] = c * X[i, j];
+                }
+
+            }
+            return X;
+        }
 
 
+        /// <summary>
+        /// Bir matristeki elemanlarin toplamini verir
+        /// </summary>
+        /// <param name="X">matris</param>
+        /// <returns>Toplam</returns>
+        public static int ElemanlariToplami(int[,] X)
+        {
+            int t = 0;
+            for (int i = 0; i < X.GetLength(0); i++)
+            {
+                for (int j = 0; j < X.GetLength(1); j++)
+                {
+                    t += X[i, j];
+                }
+            }
+            return t;
+        }
+
+        /// <summary>
+        /// Simetrik matris olusturur
+        /// </summary>
+        /// <param name="boyut">Matrisin boyutu</param>
+        /// <param name="min">alabilecegi minimum deger</param>
+        /// <param name="maks">alabilecegi maksimum deger</param>
+        /// <returns>Simetrik Matris Olustrur</returns>
+        public static int[,] SimetrikMatrisOlustur(int boyut = 3, int min = 1, int maks = 9)
+        {
+            int[,] X = KosegenMatrisOlustur(boyut, min, maks);
+            for (int i = 1; i < X.GetLength(0); i++)
+            {
+                for (int j = 0; j <= i-1; j++)
+                {
+                    X[i, j] = new Random().Next(min, maks);
+                    X[j,i] = X[i,j];
+                }
+
+            }
+            return X;
+        }
+
+        public static bool SimetrikMi(int[,] X)
+        {
+            int[,] Y = Matris.Transpoz(X);
+            return EsitliMi(X, Y);
+        }
+
+        /// <summary>
+        /// Kosegen matris olup olmadıgının kontrolunu yapar
+        /// </summary>
+        /// <param name="X">Matris</param>
+        /// <returns>Sonuc</returns>
+        public static bool KosegenMatrisMi(int[,] X)
+        {
+            bool s = true;
+            if (Matris.KareMatrisMi(X))
+            {
+                for (int i = 0; i < X.GetLength(0); i++)
+                {
+                    for (int j = 0; j < X.GetLength(1); j++)
+                    {
+                        if (!(X[i,j]==0))
+                        {
+                            if (i != j)
+                            {
+                                s = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Kare Matris degil");
+                s = false;
+            }
+            return s;
+        }
+
+        /// <summary>
+        /// Ust Ucgen matris olusturur
+        /// </summary>
+        /// <param name="boyut">matrisin boyutu</param>
+        /// <param name="min">elemanların alıcagı min deger</param>
+        /// <param name="maks">elemanların alacagı maks deger</param>
+        /// <returns>Matris</returns>
+        public static int[,] UstUcgenMatrisOlustur(int boyut = 3, int min=1, int maks = 9)
+        {
+            int[,] X = KosegenMatrisOlustur(boyut, min, maks);
+            for (int i = 0; i < X.GetLength(0); i++)
+            {
+                for (int j = i; j < X.GetLength(1); j++)
+                {
+                    X[i,j] = new Random().Next(min,maks);
+                }
+
+            }
+            return X;
+        }
+        /// <summary>
+        /// Alt Kosegen matris olusturur
+        /// </summary>
+        /// <param name="boyut">Matrisin boyutu</param>
+        /// <param name="min">Degerlerin alacagı Maks</param>
+        /// <param name="maks">Degerlerin alacagı Min</param>
+        /// <returns>Alt ucgen Matris</returns>
+        public static int[,] AltUcgenMatrisOlustur(int boyut = 3, int min = 1, int maks = 9)
+        {
+            int[,] X = KosegenMatrisOlustur(boyut, min, maks);
+            for (int i = 0; i < X.GetLength(0); i++)
+            {
+                for (int j = 0; j <= i; j++)
+                {
+                    X[i, j] = new Random().Next(min, maks);
+                }
+
+            }
+            return X;
+        }
+
+
+        /// <summary>
+        /// Parametre olarak aldigi matrisin Ust Ucgen olup olmadıgını kontrol eder
+        /// </summary>
+        /// <param name="X">matris</param>
+        /// <returns>Sonuc</returns>
+        public static bool UstUcgenMatrisMi(int[,] X)
+        {
+            bool s = true;
+            for (int i = 0; i < X.GetLength(0); i++)
+            {
+                for (int j = 0; j <= i-1; j++)
+                {
+                    if (!(X[i, j] == 0))
+                    {
+                        s = false;
+                        break;
+                    }
+                }
+
+            }
+            return s;
+        }
+
+        /// <summary>
+        /// Parametre olarak aldigi matrisin Alt Ucgen olup olmadıgını kontrol eder
+        /// </summary>
+        /// <param name="X">matris</param>
+        /// <returns>Sonuc</returns>
+        public static bool AltUcgenMatrisMi(int[,] X)
+        {
+            bool s = true;
+            for (int i = 0; i < X.GetLength(0); i++)
+            {
+                for (int j = i+1; j < X.GetLength(0); j++)
+                {
+                    if (!(X[i, j] == 0))
+                    {
+                        s = false;
+                        break;
+                    }
+                }
+
+            }
+            return s;
+        }
     }
 }

@@ -6,9 +6,9 @@ namespace BTK_Akademi
     {
         static void Main(string[] args)
         {
-            int[,] X = Matris.Olustur(3, 3);
+            int[,] X = Matris.UstUcgenMatrisOlustur(5,3,10);
             Matris.Yazdir(X);
-            Console.WriteLine("|X| = {0}",Matris.Determinant(X));
+            Console.WriteLine("{0}",Matris.AltUcgenMatrisMi(X) ? "Alt Ucgen matris" : "Alt Ucgen Matris degil");
         }
     }
 }
