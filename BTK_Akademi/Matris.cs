@@ -141,16 +141,20 @@ namespace BTK_Akademi
         {
             return SkalerMatrisOlustur(boyut, 1);
         }
+        /// <summary>
+        /// Birim Matris Kontrolu yapar
+        /// </summary>
+        /// <returns>True ya da False olabilir</returns>
         public static bool BirimMatrisMi(int[,] X)
         {
             bool s = true;
 
-            for (int i = 0; ( i< X.GetLength(0) && s==true); i++)
+            for (int i = 0; (i < X.GetLength(0) && s == true); i++)
             {
                 for (int j = 0; j < X.GetLength(1); j++)
                 {
                     /// diyagonal elemanlar dışındaki değerler 0 mı ?
-                    if (X[i,j]!=0 && i!=j)
+                    if (X[i, j] != 0 && i != j)
                     {
                         s = false;
                         break;
@@ -158,7 +162,7 @@ namespace BTK_Akademi
                     //diyagonal elemanlar bir mi
                     else
                     {
-                        if (X[i,i]!=1 && i==j)
+                        if (X[i, i] != 1 && i == j)
                         {
                             s = false;
                             break;
@@ -475,7 +479,7 @@ namespace BTK_Akademi
             bool s = true;
             for (int i = 0; i < X.GetLength(0); i++)
             {
-                for (int j = i+1; j < X.GetLength(0); j++)
+                for (int j = i+1; j < X.GetLength(1); j++)
                 {
                     if (!(X[i, j] == 0))
                     {

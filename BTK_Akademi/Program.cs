@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace BTK_Akademi
 {
@@ -6,9 +7,10 @@ namespace BTK_Akademi
     {
         static void Main(string[] args)
         {
-            int[,] X = Matris.UstUcgenMatrisOlustur(5,3,10);
-            Matris.Yazdir(X);
-            Console.WriteLine("{0}",Matris.AltUcgenMatrisMi(X) ? "Alt Ucgen matris" : "Alt Ucgen Matris degil");
+            string kaynak = Dosya.FizikselYol("Adlar.txt");
+            string hedef = Dosya.FizikselYol("Isimler.txt");
+
+            StreamReader_Writer_FileInfo.Silme(hedef);
         }
     }
 }

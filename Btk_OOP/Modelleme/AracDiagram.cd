@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Btk_OOP.Modelleme.Arac">
+    <Position X="2" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAABAAAAABEAAAQRAAAIAAAAAAAAgAAAAIAAA=</HashCode>
+      <FileName>Modelleme\Arac.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Btk_OOP.Modelleme.Tasit" Collapsed="true">
+    <Position X="4.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAIAAgAAACAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelleme\Tasit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Btk_OOP.Modelleme.Motor" Collapsed="true">
+    <Position X="6.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAABAAAARAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Modelleme\Tasit.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Btk_OOP.Modelleme.Renk" Collapsed="true">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAACCAAAAAgAAAAIAE=</HashCode>
+      <FileName>Modelleme\Tasit.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
